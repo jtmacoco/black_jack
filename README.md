@@ -6,7 +6,7 @@ run these commands to play the game
 ```
 make
 ./blackjack
-
 ```
-hit ctrl c to quit
-make sure that all values input are integers otherwise there will be errors
+
+hit ctrl c to quit \
+make sure that all values input are integers otherwise there will be errors \ 
