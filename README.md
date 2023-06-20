@@ -9,4 +9,5 @@ make
 ```
 
 hit ctrl c to quit \
-make sure that all values input are integers otherwise there will be errors \ 
+make sure that all values input are integers otherwise there will be errors  \
+still working on error checks
