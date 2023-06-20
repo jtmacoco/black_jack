@@ -91,7 +91,7 @@ int Players::player_input()//return the players input based on the probability
   else
     return 0;
 }
-void Players::add_to_hand(shared_ptr<Cards> card)
+void Players::add_to_hand(shared_ptr<Cards> card)//adds a card to players hand vector
 {
   hand.push_back(card);
 }
@@ -99,13 +99,13 @@ int Players::get_score()
 {
   return score;
 }
-vector<shared_ptr<Cards>> Players::return_cards()
+vector<shared_ptr<Cards>> Players::return_cards()//allows dealer to collect the cards from players
 {
   vector<shared_ptr<Cards>> temp = hand;
-  hand.clear();
+  hand.clear();//make sure to clear the vector so hand is empty
   return temp;
 }
-int Players::get_stats_string_length()
+int Players::get_stats_string_length()//used to calculate amout of spaces 
 {
   string length = name+" money: "+to_string(money)+"$"+" score: "+to_string(score);
   return length.size();

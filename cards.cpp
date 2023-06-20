@@ -92,7 +92,7 @@ int Cards::card_value(bool cur_user, int total)
   bool first_input = true;
   if(card[c_value_pos] == 'a' && cur_user)// check if the card is an ace and if it's the current user's card, if so prompt user to choose a value
   {
-    if(ace)
+    if(ace)//this is to make sure cur_user isn't prompt more than once for the ace value
       return card_value_ace;
     while(!ace)
     {
@@ -101,14 +101,12 @@ int Cards::card_value(bool cur_user, int total)
         ace = true;
         card_value_ace = card_value;
         return card_value;
-        //break;
       }
       else if(card_value == 11)//check if input value is 11
       { 
         ace = true;
         card_value_ace = card_value;
         return card_value;
-        //break;
       }
       else if(first_input)//if it's first input prmpt user
       {

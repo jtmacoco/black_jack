@@ -8,32 +8,32 @@
 #include <sys/ioctl.h>
 using namespace std;
 #define LR 7//LR stand for last row
-#define lc2 22//length of two cards 
-void calc_bets(vector<shared_ptr<Players>> players)
+//#define lc2 22//length of two cards 
+void calc_bets(vector<shared_ptr<Players>> players)//calculate all the players bets
 {
-  srand(time(0));
-  for(int i = 1; i < (int)players.size(); i++)
+  srand(time(0));//allows for new random number every time rather than once per program execution
+  for(int i = 1; i < (int)players.size(); i++)//start at 1 since don't want to include the cur_user
   { 
-    int player_money=players[i]->get_money();
-    if(player_money < 0)
+    int player_money=players[i]->get_money();//get how much money the player has
+    if(player_money < 0)//if the player is out of money don't subtract anything and break
     {
-      players[i]->subtract_money(0);
+      //players[i]->subtract_money(0);
       break;
     }
-    int bet = rand() % 500 +1;
-    while(bet > player_money|| (player_money-bet) < 0)
-      bet = rand() % players[i]->get_money() +1;
+    int bet = rand() % 500 +1;//get a random bet between 1 and 500
+    while(bet > player_money|| (player_money-bet) < 0)//check if the bet is a valid amout without the player having netative money
+      bet = rand() % players[i]->get_money() +1;//if random bet is to high calculate bet again using the players current money as a constraint
 
     players[i]->subtract_money(bet);
   }
 }
-int calc_stats_spaces(shared_ptr<Players> players)
+int calc_stats_spaces(shared_ptr<Players> players)//calculates the stats spaces so they are even and line up with the players cards
 {
-  int lc = players->get_hand_size()*11;
-  int str_length=players->get_stats_string_length();
-  return lc-str_length;
+  int lc = players->get_hand_size()*11;//grab how many cards the player has and multiple by 11 since each card is about 11 spaces 
+  int str_length=players->get_stats_string_length();//grab the stats string length
+  return lc-str_length;//subtract the cards length rom the stats string length
 }
-int start_display()
+int start_display()//display all options for to start the game
 {
   int input;
   cout<<"select amount of players you would to play agains"<<endl;
